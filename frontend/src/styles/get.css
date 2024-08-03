@@ -1,0 +1,21 @@
+.edit {
+width: 100px;
+height: 30px;
+text-align: center;
+background-color: green;
+margin: 5px;
+padding-top: 0px;
+}
+
+.delete {
+width: 100px;
+height: 30px;
+text-align: center;
+background-color: red;
+margin: 5px;
+padding-top: 0px;
+}
+
+button {
+    font-size: 5px;
+}

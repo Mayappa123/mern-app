@@ -1,5 +1,6 @@
 // src/components/StudentList.jsx
 import React, { useState } from "react";
+import "../styles/get.css"
 import axios from "axios";
 
 const StudentList = () => {
@@ -56,16 +57,14 @@ const StudentList = () => {
                 <td>{student.mobile}</td>
                 <td>
                   <button
-                    style={{ backgroundColor: "green", margin: "5px" }}
                     onClick={() => handleEdit(student._id)}
-                    className="btn btn-warning btn-sm mr-2"
+                    className="edit"
                   >
                     Edit
                   </button>
                   <button
-                    style={{ backgroundColor: "red" }}
                     onClick={() => handleDelete(student._id)}
-                    className="btn btn-danger btn-sm"
+                    className="delete"
                   >
                     Delete
                   </button>
@@ -80,4 +79,5 @@ const StudentList = () => {
 };
 
 export default StudentList;
+
 

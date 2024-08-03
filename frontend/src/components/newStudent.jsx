@@ -12,17 +12,13 @@ const StudentForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const data = { name, email, address, mobile };
+      console.log("Sending data:", data); 
       const response = await axios.post(
         "http://localhost:8080/api/student/new",
-        {
-          name,
-          email,
-          address,
-          mobile,
-        }
+        data
       );
       console.log(response);
-
       setMessage("Student data saved successfully!");
       setTimeout(() => {
         setMessage("");
@@ -32,6 +28,7 @@ const StudentForm = () => {
       setAddress("");
       setMobile("");
     } catch (error) {
+      console.error("Error:", error); 
       setMessage("Error saving student data. Please try again.");
       setTimeout(() => {
         setMessage("");

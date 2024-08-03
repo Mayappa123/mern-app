@@ -8,18 +8,17 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import nodemailer from "nodemailer";
 import studentRoutes from "./routes/student.js";
-import { saveRedirectUrl } from "./middleware.js";
+// import { saveRedirectUrl } from "./middleware.js";
 import User from "./models/user.js";
 import Contact from "./models/contact.js";
 import ExpressError from "./utils/ExpressError.js";
-import methodOverride from "method-override";
-
+// import methodOverride from "method-override";
 
 dotenv.config();
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"));
+// app.use(methodOverride("_method"));
 
 const dbURL = process.env.DB_URL;
 const PORT = process.env.PORT || 5000;
@@ -28,7 +27,8 @@ app.use(express.json());
 app.use(
   cors({
     origin: "http://localhost:5173",
-    methods: "GET POST, DELETE"
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
