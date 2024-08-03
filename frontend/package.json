@@ -28,7 +28,8 @@
     "react-hook-form": "^7.51.4",
     "react-router": "^6.23.0",
     "react-router-dom": "^6.23.1",
-    "styled-components": "^6.1.10"
+    "styled-components": "^6.1.10",
+    "sweetalert2": "^11.12.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

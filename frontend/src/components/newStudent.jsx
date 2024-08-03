@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/newStudent.css";
+import Swal from "sweetalert2";
 
 const StudentForm = () => {
   const [name, setName] = useState("");
@@ -13,11 +14,26 @@ const StudentForm = () => {
     e.preventDefault();
     try {
       const data = { name, email, address, mobile };
-      console.log("Sending data:", data); 
+      console.log("Sending data:", data);
       const response = await axios.post(
         "http://localhost:8080/api/student/new",
         data
       );
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Student data saved successfully",
+      });
       console.log(response);
       setMessage("Student data saved successfully!");
       setTimeout(() => {
@@ -28,7 +44,7 @@ const StudentForm = () => {
       setAddress("");
       setMobile("");
     } catch (error) {
-      console.error("Error:", error); 
+      console.error("Error:", error);
       setMessage("Error saving student data. Please try again.");
       setTimeout(() => {
         setMessage("");

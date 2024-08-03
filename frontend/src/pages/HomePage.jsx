@@ -1,15 +1,11 @@
 // src/pages/HomePage.jsx
 import React from "react";
-import StudentForm from "../components/newStudent.jsx";
-import StudentList from "../components/getStudents.jsx";
 
 const HomePage = () => {
   return (
     <div>
       <h2>Home</h2>
       <p>Welcome to the homepage!</p>
-      <StudentForm />
-      <StudentList />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
         doloremque consequatur nisi rerum voluptatibus necessitatibus ratione
