@@ -6,6 +6,7 @@ const StudentList = () => {
   const [students, setStudents] = useState([]);
   const [error, setError] = useState("");
 
+  //get request
   const fetchStudents = async () => {
     try {
       const response = await axios.get("http://localhost:8080/api/student");
@@ -16,16 +17,15 @@ const StudentList = () => {
     }
   };
 
-
-const handleDelete = async (id) => {
-  try {
-    await axios.delete(`http://localhost:8080/api/student/${id}`);
-    setStudents(students.filter((student) => student._id !== id));
-  } catch (error) {
-    setError("Error deleting student. Please try again.");
-  }
-};
-
+  //delete request
+  const handleDelete = async (id) => {
+    try {
+      await axios.get(`http://localhost:8080/api/student/${id}`);
+      setStudents(students.filter((student) => student._id !== id));
+    } catch (error) {
+      setError("Error deleting student. Please try again.");
+    }
+  };
 
   return (
     <div>
@@ -80,3 +80,4 @@ const handleDelete = async (id) => {
 };
 
 export default StudentList;
+
