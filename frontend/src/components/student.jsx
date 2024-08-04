@@ -1,91 +1,55 @@
-// src/App.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import StudentList from "./getStudents";
+import EditStudentForm from "./editStudent";
 
-const App = () => {
+const Student = () => {
   const [students, setStudents] = useState([]);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    address: "",
-    mobile: "",
-  });
+  const [editingStudentId, setEditingStudentId] = useState(null);
 
   useEffect(() => {
-    fetchStudents();
+    axios
+      .get("http://localhost:8080/api/student/")
+      .then((response) => setStudents(response.data))
+      .catch((error) => console.error("Error fetching students:", error));
   }, []);
 
-  const fetchStudents = async () => {
-    const res = await axios.get("http://localhost:5000/api/students");
-    setStudents(res.data);
+  const handleEdit = (id) => {
+    setEditingStudentId(id);
   };
 
-  // const createStudent = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.post("http://localhost:5000/api/student/new", form);
-  //     setForm({ name: "", email: "", address: "", mobile: "" });
-  //     fetchStudents();
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const handleUpdate = (updatedStudent) => {
+    setStudents((prevStudents) =>
+      prevStudents.map((student) =>
+        student._id === updatedStudent._id ? updatedStudent : student
+      )
+    );
+    setEditingStudentId(null);
+  };
 
-  const deleteStudent = async (id) => {
+  const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/student/${id}`);
-      fetchStudents();
+      await axios.delete(`http://localhost:8080/api/student/${id}`);
+      setStudents((prevStudents) =>
+        prevStudents.filter((student) => student._id !== id)
+      );
     } catch (error) {
-      console.error(error);
+      console.error("Error deleting student:", error);
     }
   };
 
   return (
     <div>
-      <h1>Student Management</h1>
-      <form onSubmit={createStudent}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Address"
-          value={form.address}
-          onChange={(e) => setForm({ ...form, address: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Mobile"
-          value={form.mobile}
-          onChange={(e) => setForm({ ...form, mobile: e.target.value })}
-          required
-        />
-        <button type="submit">Add Student</button>
-      </form>
-
-      <ul>
-        {students.map((student) => (
-          <li key={student._id}>
-            {student.name} - {student.email} - {student.address} -{" "}
-            {student.mobile}
-            <button onClick={() => deleteStudent(student._id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      <StudentList
+        students={students}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
+      {editingStudentId && (
+        <EditStudentForm studentId={editingStudentId} onUpdate={handleUpdate} />
+      )}
     </div>
   );
 };
 
-export default App;
+export default Student;

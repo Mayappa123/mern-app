@@ -32,9 +32,8 @@ const StudentForm = () => {
       });
       Toast.fire({
         icon: "success",
-        title: "Student data saved successfully",
+        title: "Data saved successfully",
       });
-      console.log(response);
       setMessage("Student data saved successfully!");
       setTimeout(() => {
         setMessage("");

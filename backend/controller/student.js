@@ -23,11 +23,39 @@ export const newStudent = async (req, res) => {
   }
 };
 
+export const updateStudent = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedData = req.body;
+    const student = await Student.findByIdAndUpdate(id, updatedData, {
+      new: true,
+    });
+
+    if (!student) {
+      return res.json({ message: "Student not found" });
+    }
+
+    res.json(student);
+  } catch (error) {
+    res.json({ message: "Error updating student data", error });
+  }
+};
+
+export const editStudent = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const student = Student.findById(id);
+    console.log(student);
+  } catch (error) {
+    console.error("error in editing student data");
+  }
+};
+
 export const deleteStudent = async (req, res) => {
   try {
     const { id } = req.params;
     const deletedStudent = await Student.findByIdAndDelete(id);
-   console.log(deletedStudent);
+    console.log(deletedStudent);
     res.json({ message: "Student deleted successfully" });
   } catch (error) {
     res.json({ message: error.message });
