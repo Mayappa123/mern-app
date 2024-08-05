@@ -4,15 +4,15 @@ import {
   newStudent,
   deleteStudent,
   updateStudent,
-  editStudent
+  editStudent,
 } from "../controller/student.js";
 
 const router = express.Router();
 
 router.get("/", getStudent);
 router.post("/new", newStudent);
-router.get("/:id", deleteStudent);
 router.put("/update/:id", updateStudent);
 router.get("/edit/:id", editStudent);
+router.delete("/delete/:id", deleteStudent);
 
 export default router;

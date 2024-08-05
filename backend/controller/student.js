@@ -3,11 +3,11 @@ import Student from "../models/student.js";
 export const getStudent = async (req, res) => {
   try {
     const students = await Student.find();
-    res.status(200).json(students);
+    res.json(students);
   } catch (error) {
     console.error("Error fetching students:", error);
     if (!res.headersSent) {
-      res.status(500).json({ message: "Internal Server Error" });
+      res.json({ message: "Internal Server Error" });
     }
   }
 };

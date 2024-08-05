@@ -3,8 +3,7 @@ import axios from "axios";
 import "../styles/editForm.css";
 import Swal from "sweetalert2";
 
-
-const EditStudentForm = ({ student, onClose }) => {
+const EditStudentForm = ({ student, onClose, onUpdate }) => {
   const [name, setName] = useState(student.name || "");
   const [email, setEmail] = useState(student.email || "");
   const [address, setAddress] = useState(student.address || "");
@@ -46,7 +45,8 @@ const EditStudentForm = ({ student, onClose }) => {
         icon: "success",
         title: "Data updated successfully",
       });
-      onClose();
+      onUpdate(); 
+      onClose(); 
     } catch (error) {
       console.error("Error updating student:", error);
     }

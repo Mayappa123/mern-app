@@ -1,21 +1,52 @@
 .edit {
-width: 100px;
-height: 30px;
-text-align: center;
-background-color: green;
-margin: 5px;
-padding-top: 0px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  background-color: green;
+  margin: 5px;
+  padding-top: 0px;
 }
 
 .delete {
-width: 100px;
-height: 30px;
-text-align: center;
-background-color: red;
-margin: 5px;
-padding-top: 0px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  background-color: red;
+  margin: 5px;
+  padding-top: 0px;
+}
+
+.bttn {
+  display: flex;
+  justify-content: space-around;
 }
 
 button {
-    font-size: 15px;
+  font-size: 15px;
+}
+
+table {
+  margin: 0 20px;
+}
+
+table,
+th,
+tbody,
+thead,
+td,
+tr {
+  text-align: center;
+}
+
+.allBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.allBtn button {
+  padding: 0px 15px;
+  height: 50px;
+  width: 200px;
 }
