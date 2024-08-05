@@ -5,7 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const StudentList = () => {
-  const [studentData, setStudentData] = useState([]);
+  const [studentData, setStudentData] = useState("");
   const [error, setError] = useState("");
   const [selectedStudent, setSelectedStudent] = useState("");
 
@@ -15,7 +15,7 @@ const StudentList = () => {
       setStudentData(response.data);
       setError("");
     } catch (error) {
-      setError("Error fetching student data. Please try again.");
+      setError("Please try again.");
     }
   };
 
@@ -94,9 +94,15 @@ const StudentList = () => {
         <EditStudentForm
           student={selectedStudent}
           onClose={() => setSelectedStudent(null)}
-          onUpdate={fetchStudents} 
+          onUpdate={fetchStudents}
         />
       )}
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque totam
+        delectus qui exercitationem voluptates, unde beatae dolore quia harum
+        tempora nemo eveniet corrupti ipsam maiores ut. Cupiditate dolorum
+        exercitationem voluptate.
+      </p>
     </div>
   );
 };

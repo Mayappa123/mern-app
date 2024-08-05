@@ -26,7 +26,7 @@ button {
 }
 
 table {
-  margin: 0 20px;
+  row-gap: 2px;
 }
 
 table,
@@ -49,4 +49,26 @@ tr {
   padding: 0px 15px;
   height: 50px;
   width: 200px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(210, 207, 204);
+}
+
+tr {
+    margin-bottom: 5px;
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(188, 159, 255);
+}
+
+th {
+    background-color: black;
+    color: white;
+    margin-top: 20px;
+}
+
+tr:hover {
+    border: 2px solid rgb(0, 0, 0);
 }
