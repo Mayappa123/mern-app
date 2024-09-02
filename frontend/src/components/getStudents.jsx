@@ -23,25 +23,29 @@ const StudentList = () => {
     setSelectedStudent(student);
   };
 
+  const showToast = () => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Data deleted successfully",
+    });
+  };
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:8080/api/student/delete/${id}`);
       setStudentData(studentData.filter((student) => student._id !== id));
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: "Data deleted successfully",
-      });
+      showToast();
     } catch (error) {
       setError("Error deleting student. Please try again.");
     }
