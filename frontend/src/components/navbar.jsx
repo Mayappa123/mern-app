@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/navbar.css";
 import { Link } from "react-router-dom";
 
-
 const Navbar = () => {
   return (
     <>
@@ -10,8 +9,8 @@ const Navbar = () => {
         className="sticky sticky-top nav"
         style={{ position: "fixed", top: "0px" }}
       >
-        <a href="/" className="site-name">
-          SiteName
+        <a href="/" className="sitename">
+          MyApp
         </a>
         <ul>
           <li className="active">
@@ -28,6 +27,9 @@ const Navbar = () => {
           </li>
           <li className="active">
             <Link to="/allStudents">All Student</Link>
+          </li>
+          <li className="active">
+            <Link to="/newcomponent">NewComponent</Link>
           </li>
           <li className="active">
             <Link to="/signup">Signup </Link>

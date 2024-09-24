@@ -8,6 +8,7 @@ import LoginPage from "../pages/LoginPage";
 import StudentForm from "../components/newStudent";
 import StudentList from "../components/getStudents";
 import App from "../App";
+import NewComponent from "../components/NewComponent";
 
 
 const AppRoutes = () => {
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route path="login" element={<LoginPage />} />
         <Route path="newStudent" element={<StudentForm />} />
         <Route path="allStudents" element={<StudentList />} />
+        <Route path="newcomponent" element={<NewComponent />} />
       </Route>
     </Routes>
   );
