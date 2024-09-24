@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <nav
-        className="sticky sticky-top nav"
-        style={{ position: "fixed", top: "0px" }}
-      >
+      <nav className="sticky sticky-top nav">
         <a href="/" className="sitename">
           MyApp
         </a>

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/get.css";
 import EditStudentForm from "./editStudent";
 import axios from "axios";
-import Swal from "sweetalert2";
-
+import { DeleteToast } from "./ShowToast";
 const StudentList = () => {
   const [studentData, setStudentData] = useState("");
   const [error, setError] = useState("");
@@ -19,33 +18,19 @@ const StudentList = () => {
     }
   };
 
+  useEffect(() => {
+    fetchStudents();
+  }, []);
+
   const handleEdit = (student) => {
     setSelectedStudent(student);
-  };
-
-  const showToast = () => {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-      },
-    });
-    Toast.fire({
-      icon: "success",
-      title: "Data deleted successfully",
-    });
   };
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:8080/api/student/delete/${id}`);
       setStudentData(studentData.filter((student) => student._id !== id));
-      showToast();
+      DeleteToast();
     } catch (error) {
       setError("Error deleting student. Please try again.");
     }
@@ -53,12 +38,6 @@ const StudentList = () => {
 
   return (
     <div>
-      <div className="allBtn">
-        <button onClick={fetchStudents} className="btn btn-primary">
-          All Students
-        </button>
-      </div>
-
       {error && <p className="text-danger">{error}</p>}
       {studentData.length > 0 && (
         <table className="table">

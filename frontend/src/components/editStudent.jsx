@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/editForm.css";
-import Swal from "sweetalert2";
+import { EditToast } from "./ShowToast";
 
 const EditStudentForm = ({ student, onClose, onUpdate }) => {
   const [name, setName] = useState(student.name || "");
@@ -30,23 +30,10 @@ const EditStudentForm = ({ student, onClose, onUpdate }) => {
           mobile,
         }
       );
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: "Data updated successfully",
-      });
-      onUpdate(); 
-      onClose(); 
+
+      EditToast();
+      onUpdate();
+      onClose();
     } catch (error) {
       console.error("Error updating student:", error);
     }
