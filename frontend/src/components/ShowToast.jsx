@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 
-// Delete Toast
-export const DeleteToast = () => {
+// Common Toast Function
+const showToast = (icon, title) => {
   const Toast = Swal.mixin({
     toast: true,
     position: "top-end",
@@ -14,26 +14,15 @@ export const DeleteToast = () => {
     },
   });
   Toast.fire({
-    icon: "success",
-    title: "Data deleted successfully",
+    icon,
+    title,
   });
 };
 
+// Delete Toast
+export const DeleteToast = () =>
+  showToast("success", "Data deleted successfully");
+
 // Edit Toast
-export const EditToast = () => {
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.onmouseenter = Swal.stopTimer;
-      toast.onmouseleave = Swal.resumeTimer;
-    },
-  });
-  Toast.fire({
-    icon: "success",
-    title: "Data updated successfully",
-  });
-};
+export const EditToast = () =>
+  showToast("success", "Data updated successfully");
