@@ -1,5 +1,3 @@
-
-
 //Contact.jsx
 
 import React from "react";
@@ -56,7 +54,8 @@ const Contact = () => {
             Email
           </label>
           <input
-            className="form-control" id="email"
+            className="form-control"
+            id="email"
             {...register("Email", {
               required: { value: true, message: "email is required" },
             })}
@@ -69,13 +68,16 @@ const Contact = () => {
             Subject
           </label>
           <input
-            className="form-control" id="subject"
+            className="form-control"
+            id="subject"
             {...register("Subject", {
               required: { value: true, message: "subject is required" },
             })}
             placeholder="Enter Subject"
           />
-          {errors.Subject && <span className="red">{errors.Subject.message}</span>}
+          {errors.Subject && (
+            <span className="red">{errors.Subject.message}</span>
+          )}
         </div>
 
         <div className="form-group">
@@ -83,7 +85,8 @@ const Contact = () => {
             Message
           </label>
           <textarea
-            className="form-control" id="message"
+            className="form-control"
+            id="message"
             {...register("Message", {
               required: { value: true, message: "message is required" },
             })}
