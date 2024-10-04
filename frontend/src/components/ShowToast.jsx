@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-// Common Toast Function
+// Toast Function
 const showToast = (icon, title) => {
   const Toast = Swal.mixin({
     toast: true,

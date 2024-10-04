@@ -1,6 +1,6 @@
 /* styles/footer.css */
 .footer {
-  background-color: #333;
+  background-color: black;
   color: #fff;
   padding: 20px 0;
   text-align: center;
@@ -38,7 +38,7 @@
 }
 
 .footer-social a:hover {
-  color: #ccc;
+  transform: scale(2);
 }
 
 .footer-credit {
