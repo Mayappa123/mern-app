@@ -8,6 +8,10 @@ import {
   faInstagram,
   faLinkedin,
   faGithub,
+  faThreads,
+  faGoogle,
+  faQuora,
+  faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
@@ -40,6 +44,18 @@ const Footer = () => {
         </a>
         <a href="https://github.com" aria-label="GitHub">
           <FontAwesomeIcon icon={faGithub} />
+        </a>
+        <a href="https://threads.com" aria-label="GitHub">
+          <FontAwesomeIcon icon={faThreads} />
+        </a>
+        <a href="https://google.com" aria-label="GitHub">
+          <FontAwesomeIcon icon={faGoogle} />
+        </a>
+        <a href="https://quora.com" aria-label="GitHub">
+          <FontAwesomeIcon icon={faQuora} />
+        </a>
+        <a href="https://pinterest.com" aria-label="GitHub">
+          <FontAwesomeIcon icon={faPinterest} />
         </a>
       </div>
       <p className="footer-credit">
