@@ -27,6 +27,7 @@ button {
 
 table {
   row-gap: 2px;
+  margin: 0 auto;
 }
 
 table,
@@ -52,23 +53,23 @@ tr {
 }
 
 tr:nth-child(even) {
-    background-color: rgb(210, 207, 204);
+  background-color: rgb(210, 207, 204);
 }
 
 tr {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 tr:nth-child(odd) {
-    background-color: rgb(188, 159, 255);
+  background-color: rgb(188, 159, 255);
 }
 
 th {
-    background-color: black;
-    color: white;
-    margin-top: 20px;
+  background-color: black;
+  color: white;
+  margin-top: 20px;
 }
 
 tr:hover {
-    border: 2px solid rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
 }
